@@ -1,0 +1,19 @@
+/* Reset en gebruik van before en after voor later gebruik van pseudo-elementen */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Verwijderen van wit lijntje onder afbeeldingen doordat afbeeldingen inline-elementen zijn */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+} 
+
+ul {
+    list-style: none;
+}
