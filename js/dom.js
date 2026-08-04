@@ -5,6 +5,10 @@ const addStatus = (status) =>
   (document.getElementById("status").innerHTML =
     document.getElementById("status").innerHTML + "<p>" + status + "</p>");
 
+const addSubTitle = (subtitle) =>
+    (document.getElementById("status").innerHTML =
+        document.getElementById("status").innerHTML + "<h3>" + subtitle + "</h3>");
+
 const createTableRow = () => document.createElement("tr");
 
 const addTableRow = ({ tableBody, tableRow }) => {
