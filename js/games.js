@@ -22,51 +22,71 @@ const toString = (myGame) => {
 const getAverageRating = (listOfGames) => {
     let som = 0;
 
-    for(const game of listOfGames){
+    listOfGames.forEach((game) => {
         som += game.rating;
-    }
+    });
+    
     const average = (som/listOfGames.length).toFixed(1);
-    return average
+    return average;
 }
 
 const getHighestRating = (listOfGames) => {
     let result = listOfGames[0];
 
-    for(const game of listOfGames){
+    listOfGames.forEach((game) => {
         if(game.rating > result.rating){
             result = game;
-        }
-    }
+        }    
+    });
     return result;
 };
+
+const printGamesRatingAbove = (listOfGames,rating) => {
+    listOfGames
+    .filter((game) => (game.rating > rating))
+    .forEach((game) => {
+        addStatus(toString(game));
+    });
+};
+
+const filterAndPrintGames = (listOfGames, customFilter) => {
+    listOfGames
+    .filter(customFilter)
+    .forEach((game) => {
+        addStatus(toString(game));
+    });
+};
+
+const type = "open world game"
+const isType = (game) => game.type === type;
 
 const isFavourite = (game) => {
     return game.isFavourite;
 };
 
 const printFavouriteGames = (listOfGames) => {
-    for (const game of listOfGames) {
-        if(isFavourite(game)) {
-            addStatus(game.name)
-        }
-    }  
+    listOfGames
+    .filter((game) => isFavourite(game))
+    .forEach((game) => {
+        addStatus(game.name);
+    });
 };
 
 const printAllGames = (listOfGames) => {
-
     const highestGame = getHighestRating(listOfGames);
 
-    for(const game of listOfGames) {
-        addStatus(toString(game));
-    }
-
+    listOfGames
+    .map(toString)
+    .forEach((game) => {
+        addStatus(game);
+    });
 
     if(listOfGames.length > 0){
 
         addSubTitle("Favourite games in the library");
-        printFavouriteGames(listOfGames)
+        printFavouriteGames(listOfGames);
 
-        addSubTitle("Some statistics... ");
+        addSubTitle("Some statistics...");
 
     
         addStatus(`Average rating: ${getAverageRating(listOfGames)}`);
@@ -92,4 +112,14 @@ printAllGames(friendGames);
 
 addSubTitle("All the games in our library");
 printAllGames(allGames);
+
+const rating = 3
+addSubTitle(`These are all games with rating above ${rating}`);
+printGamesRatingAbove(games,rating);
+
+addSubTitle("Favourite games");
+filterAndPrintGames(games, isFavourite);
+
+addSubTitle(`These games have type "${type}"`);
+filterAndPrintGames(games, isType);
 
