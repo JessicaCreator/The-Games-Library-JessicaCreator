@@ -7,26 +7,32 @@ const games = [
 { name: "GTA V", type: "open world game", rating: 5.0, isFavourite: true},
 { name: "Gran Turismo", type: "racing game", rating: 6.0, isFavourite: true}];
 
-const [firstGame, secondGame] = games;
+const friendGames = [
+{ name: "Minecraft", type: "open world game", rating: 5.0, isFavourite: true},
+{ name: "Tetris", type: "puzzle game", rating: 5.0, isFavourite: false}
+];
+
+const allGames = [...games, ...friendGames];
+
 
 const toString = (myGame) => {
     return `Name: ${myGame.name} - Type: ${myGame.type} - Rating: ${myGame.rating} - ${myGame.isFavourite ? "Favourite game": "Not a favourite game"}`;
 };
 
-const getAverageRating = () => {
+const getAverageRating = (listOfGames) => {
     let som = 0;
 
-    for(const game of games){
+    for(const game of listOfGames){
         som += game.rating;
     }
-    const average = (som/games.length).toFixed(1);
+    const average = (som/listOfGames.length).toFixed(1);
     return average
 }
 
-const getHighestRating = () => {
-    let result = games[0];
+const getHighestRating = (listOfGames) => {
+    let result = listOfGames[0];
 
-    for(const game of games){
+    for(const game of listOfGames){
         if(game.rating > result.rating){
             result = game;
         }
@@ -34,49 +40,56 @@ const getHighestRating = () => {
     return result;
 };
 
-const highestGame = getHighestRating();
-
 const isFavourite = (game) => {
     return game.isFavourite;
 };
 
-const printFavouriteGames = () => {
-    for (const game of games) {
+const printFavouriteGames = (listOfGames) => {
+    for (const game of listOfGames) {
         if(isFavourite(game)) {
             addStatus(game.name)
         }
     }  
 };
 
-const printAllGames = () => {
-    for(const game of games) {
+const printAllGames = (listOfGames) => {
+
+    const highestGame = getHighestRating(listOfGames);
+
+    for(const game of listOfGames) {
         addStatus(toString(game));
     }
 
 
-    if(games.length > 0){
+    if(listOfGames.length > 0){
 
-        addSubTitle("These are all the favourite games in the library");
-        printFavouriteGames()
+        addSubTitle("Favourite games in the library");
+        printFavouriteGames(listOfGames)
 
         addSubTitle("Some statistics... ");
 
     
-        addStatus(`Average rating: ${getAverageRating()}`);
+        addStatus(`Average rating: ${getAverageRating(listOfGames)}`);
         addStatus (`${highestGame.name} is the game with the highest rating: ${highestGame.rating}`);
 
-        if (games.length >= 2) {
-            addSubTitle("My first 2 games are: ");
-            addStatus(firstGame.name);
-            addStatus(secondGame.name); 
+        if (listOfGames.length >= 2) {
+            addSubTitle("The first 2 games are");
+            addStatus(listOfGames[0].name);
+            addStatus(listOfGames[1].name); 
         } 
 
     } else {
         addStatus("Er zijn geen games beschikbaar");
     }  
-
     
 }
 
-printAllGames();
+addSubTitle("My own games");
+printAllGames(games);
+
+addSubTitle("My best friend's games");
+printAllGames(friendGames);
+
+addSubTitle("All the games in our library");
+printAllGames(allGames);
 
