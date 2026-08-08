@@ -12,6 +12,7 @@ const fetchGames = async () => {
     const response = await fetch("http://localhost:3000/games");
     const result = await response.json();
 
+    games.length = 0;
     games.push(...result)
 
     console.log(games);
@@ -50,7 +51,7 @@ const setCaption = () => {
 };
 
 
-const renderGames = (listOfGames, filterFunction) => {
+const renderGames = (listOfGames, filterFunction, emptyMessage) => {
     const gameTable = document.getElementById("my-games-table-body");
     gameTable.innerHTML = "";
 
@@ -58,28 +59,61 @@ const renderGames = (listOfGames, filterFunction) => {
     ? listOfGames.filter(filterFunction)
     : listOfGames;
 
-    filteredGames.forEach((game) => {
+    if(games.length === 0) {
+        clearStatusMessage();
+        hideTable({tableId: "gamesTable"});
+        addStatus("No games in library.")
+
+    } else if (filteredGames.length === 0) {
+        clearStatusMessage();
+        hideTable({tableId: "gamesTable"});
+        addStatus(emptyMessage);
+    
+    } else {
+        unhideTable({tableId : "gamesTable"});
+
+        filteredGames.forEach((game) => {
         const tableRow = createTableRow();
         
         addTableCell({tableRow, value: game.name});
         addTableCell({tableRow, value: game.type});
         addTableCell({tableRow, value: game.rating});
+        
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = "Delete";
+
+        addDeleteCell({tableRow, deleteButton});
+
+        deleteButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            deleteGame(game);
+        })
+
 
         tableRow.addEventListener("click", () => {
             clearStatusMessage();
             addStatus(toString(game));
-        })
+        });
+
+        tableRow.addEventListener("dblclick", () => {
+            clearStatusMessage();
+            toggleFavourite(game);
+            
+        });
+
         tableRow.addEventListener("mouseover", () => {
             tableRow.className = "select";
-        })
+        });
+
         tableRow.addEventListener("mouseout", () => {
             tableRow.className = "";
-        })
+        });
          
         addTableRow({table: gameTable, tableRow});
         
-    });
-}
+        });
+    }
+};
 
 setTable();
 setStatus();
@@ -94,16 +128,18 @@ const favouriteButton = document.querySelector("#show-favourite");
 favouriteButton.addEventListener("click", () => {
     clearStatusMessage();
     clearCaption();
-    clearSearchInput();
+    clearSearchInput("show-rating");
+    clearSearchInput("search-games");
     
-    renderGames(games, isFavourite);
+    renderGames(games, isFavourite, "No favourite games found.");
 })
 
 const allButton = document.querySelector("#show-all");
 allButton.addEventListener("click" , () => {
     clearStatusMessage();
     clearCaption();
-    clearSearchInput();
+    clearSearchInput("show-rating");
+    clearSearchInput("search-games");
 
     renderGames(games);
 })
@@ -111,7 +147,7 @@ allButton.addEventListener("click" , () => {
 const status = document.querySelector("#status")
 
     status.addEventListener("mouseover", () => {
-    status.setAttribute("style", "background-color: lightblue");
+    status.setAttribute("style", "background-color: #89a9c6");
     });
 
     status.addEventListener("mouseout", () => {
@@ -131,10 +167,13 @@ const title = document.querySelector("h2");
 
 const ratingInput = document.getElementById("show-rating");
 ratingInput.addEventListener("input", () => {
-    const rating = Number(ratingInput.value);
-
-    renderGames(games, (game) => game.rating > rating);
     
+    const rating = Number(ratingInput.value);
+    
+    renderGames(
+        games,
+        (game) => game.rating > rating, 
+        `There are no games with rating higher than "${rating}".`);
 });
 
 const fetchAndRenderGames = async () => {
@@ -150,9 +189,14 @@ const searchByFetch = async (chars) => {
     return await response.json();    
 };
 
-const updateCaption = (chars) => {
+const updateCaption = (chars, result) => {
     const caption = document.querySelector("caption");
-    caption.innerHTML = `Games with name containing "${chars}"`;
+    
+     if (result.length > 0) {
+        caption.innerHTML = `Games with name containing "${chars}"`;
+    } else {
+        caption.innerHTML = "";
+    }
 };
 
 const searchByFetchAndRender = async () => {
@@ -170,10 +214,10 @@ const searchByFetchAndRender = async () => {
     const result = await searchByFetch(input.value);
 
     addStatus(`Games with name containing "${chars}"`);
-    updateCaption(chars);
+    updateCaption(chars, result);
 
-    renderGames(result);
-}
+    renderGames(result, undefined, `There are no games with name containing "${chars}".`);
+};
 
 const getGameButton = document.querySelector("#get-games");
 
@@ -181,3 +225,28 @@ getGameButton.addEventListener("click", () => {
     searchByFetchAndRender();
 });
 
+const toggleFavourite = async (game) => {
+   await fetch(`http://localhost:3000/games/${game.id}/favourite`, {
+        method: "POST"
+   });
+
+   await fetchAndRenderGames();
+
+   const updatedGame = games.find((gameFromList) => gameFromList.id === game.id);
+   
+   addStatus(`The game with name ${updatedGame.name} is now ${updatedGame.isFavourite ? "my favourite" : "not my favourite"}`);      
+                
+};
+
+const deleteGame = async (game) => {
+   await fetch(`http://localhost:3000/games/${game.id}`, {
+        method: "DELETE"
+   });
+
+   await fetchAndRenderGames();
+   
+   if(games.length > 0) {
+        addStatus(`The game with name ${game.name} is now deleted.`);
+    }
+                
+};
