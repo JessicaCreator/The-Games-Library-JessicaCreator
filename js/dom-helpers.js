@@ -1,17 +1,36 @@
-const addStatus = (status) =>
-  (document.getElementById("status").innerHTML =
-    document.getElementById("status").innerHTML + "<p>" + status + "</p>");
+// const addStatus = (status) =>
+//   (document.getElementById("status").innerHTML =
+//     document.getElementById("status").innerHTML + "<p>" + status + "</p>");
+
+const addStatus = (status) => {
+    const statusElement = document.getElementById("status");
+    const message = document.createElement("p");
+    message.innerHTML = status;
+    statusElement.appendChild(message);
+};
 
 const clearStatus = (status) =>
   (document.getElementById("status").innerHTML = "");
 
 const clearStatusMessage = () => {
     const status = document.getElementById("status");
-    const messages = status.querySelectorAll("p");
+    const message = status.querySelectorAll("p");
     
-    messages.forEach((message) => {
+    message.forEach((message) => {
         message.remove();
     });
+};
+
+const addStatusError = (status) => {
+    clearStatus();
+
+    const statusElement = document.getElementById("status");
+    const message = document.createElement("p");
+    message.innerHTML = status;
+
+    message.setAttribute("style", "color: #f10c0c");
+    
+    statusElement.appendChild(message);
 };
 
 const clearCaption = () => {
