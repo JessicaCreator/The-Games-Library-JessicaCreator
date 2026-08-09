@@ -5,7 +5,7 @@ const fetchGames = async () => {
     const result = await response.json();
 
     games.length = 0;
-    games.push(...result)
+    games.push(...result);
 };
 
 const toString = (myGame) => {
