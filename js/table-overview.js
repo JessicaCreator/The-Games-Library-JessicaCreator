@@ -1,11 +1,3 @@
-// const games = [
-// { name: "Fifa23", type: "football game", rating: 7.0, isFavourite: false},
-// { name: "AOTennis 2", type: "tennis game", rating: 2.0, isFavourite: true},
-// { name: "Elden Ring", type: "fantasy game", rating: 4.0, isFavourite: false},
-// { name: "Horizon Forbidden West", type: "adventure game", rating: 3.5, isFavourite: false},
-// { name: "Pokemon Legends: Arceus", type: "RPG game", rating: 3.0, isFavourite: true},
-// { name: "GTA V", type: "open world game", rating: 5.0, isFavourite: true},
-// { name: "Gran Turismo", type: "racing game", rating: 6.0, isFavourite: true}];
 const games = [];
 
 const fetchGames = async () => {
@@ -14,8 +6,6 @@ const fetchGames = async () => {
 
     games.length = 0;
     games.push(...result)
-
-    console.log(games);
 };
 
 const toString = (myGame) => {

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minecraft server</title>
+
+    <link type="text/css" href="styles/reset.css" rel="stylesheet" />
+    <link type="text/css" href="styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/styleMinecraft.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <img
+          src="images/logegames.jpg"
+          alt="Logo image of games"
+          class="logo"
+        />
+
+        <nav>
+          <ul>
+            <li class="actual">
+              <a href="index.html">Home</a>
+            </li>
+
+            <li>
+              <a href="table-overview.html">Games</a>
+            </li>
+
+            <li>
+              <a href="add-game.html">Add game</a>
+            </li>
+
+            <li>
+              <a href="minecraft.html">Minecraft</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="container-minecraft">
+          <h1>Minecraft server</h1>
+          <p>
+            This table shows the number of players currently online on
+            snapcraft.net.
+          </p>
+          <p>Generated since <span id="start-time"></span></p>
+          <h2>Limit lines of data to</h2>
+          <ul>
+            <li>
+              <input
+                type="radio"
+                name="numberOfLines"
+                id="nl-2"
+                value="2"
+              /><label for="nl-2">2</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="numberOfLines"
+                id="nl-5"
+                value="5"
+              /><label for="nl-5">5</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="numberOfLines"
+                id="nl-20"
+                value="20"
+                checked
+              /><label for="nl-20">20 (default)</label>
+            </li>
+          </ul>
+          <h2>Sort data on</h2>
+          <p>
+            When both time and number of players are checked: data is first
+            ordered on number of players, next on date.
+          </p>
+          <ul>
+            <li>
+              <input type="radio" id="time-oldest" name="time" checked /><label
+                for="time-oldest"
+                >time (oldest values first)</label
+              >
+            </li>
+            <li>
+              <input type="radio" id="time-first" name="time" /><label
+                for="time-first"
+                >time (newest values first)</label
+              >
+            </li>
+            <li>
+              <input type="checkbox" id="value" /><label for="value"
+                >number of players (highest numbers first)</label
+              >
+            </li>
+          </ul>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Players</th>
+                  <th>Max number of players</th>
+                </tr>
+              </thead>
+              <tbody id="minecraftTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer>Jessica Vervaet - Front-end - 2026</footer>
+    </div>
+  </body>
+</html>

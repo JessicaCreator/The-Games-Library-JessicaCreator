@@ -1,0 +1,56 @@
+/* Set a max-width for the content */
+.container-minecraft {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.container-minecraft h2 {
+    font-size: 1.1em;
+    margin-bottom: 0.4em
+}
+
+/* Style the main content */
+.container-minecraft p {
+    margin-bottom: 10px;
+}
+
+/* Style the radio buttons and checkboxes */
+.container-minecraft input[type="radio"],
+.container-minecraft input[type="checkbox"] {
+    margin-left: 15px;
+    margin-right: 8px;
+}
+
+/* Style the form elements */
+.container-minecraft ul {
+    margin-bottom: 20px;
+}
+
+.container-minecraft li {
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+
+
+/* Responsive styles */
+/* @media screen and (max-width: 600px) {
+
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+
+    td,
+    th {
+        white-space: nowrap;
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+
+} */
