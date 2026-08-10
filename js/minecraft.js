@@ -62,7 +62,7 @@ const readTimeSort = () => {
 };
 
 const renderData = (listOfData) => {
-    console.log("renderData krijgt: ", listOfData);
+    // console.log("renderData krijgt: ", listOfData);
 
     const dataTable = document.getElementById("minecraftTable");
     dataTable.innerHTML = "";

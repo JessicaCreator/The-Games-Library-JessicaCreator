@@ -1,0 +1,40 @@
+:root {
+/* Kleuren */
+--primary-color: #1F4E79;
+--secondary-color: #ebecee;
+--accent-color: #217346;
+--headerfooter-color: #E2E8F0;
+
+--text-color: #2D2D2D;
+--border-color: #D9E1E8;
+--white: #fff;
+
+/* Lettertypes */
+--font-main: "Roboto", sans-serif;
+--font-heading: "Poppins", sans-serif;
+
+--line-height: 1.6;
+
+/* Afmetingen */
+--container: 1200px;
+--container-narrow: 800px;
+
+--border-radius: 0.75rem;
+--border-radius-md: 1rem;
+
+--border-thin-sm:0.15rem;
+--border-thin:0.25rem;
+
+--spacing-xs: 0.25rem;
+--spacing-sm: 0.5rem;
+--spacing-md: 1rem;
+--spacing-lg: 2rem;
+--spacing-xl: 4rem;
+
+--header-height: 5rem;
+
+/* Effecten */
+--shadow: 0 4px 12px rgba(0,0,0,0.10);
+--transition: all .3s ease;
+
+}

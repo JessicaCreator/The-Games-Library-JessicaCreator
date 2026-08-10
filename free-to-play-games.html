@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free to play games</title>
+
+    <link type="text/css" href="styles/reset.css" rel="stylesheet" />
+    <link type="text/css" href="styles/variables.css" rel="stylesheet" />
+    <link type="text/css" href="styles/style.css" rel="stylesheet" />
+    <link type="text/css" href="styles/freetoplaygames.css" rel="stylesheet" />
+
+    <script src="js/dom-helpers.js" defer></script>
+    <script src="js/free-play-games.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <img
+          src="images/logegames.jpg"
+          alt="Logo image of games"
+          class="logo"
+        />
+
+        <nav>
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+
+            <li>
+              <a href="table-overview.html">Games</a>
+            </li>
+
+            <li>
+              <a href="add-game.html">Add game</a>
+            </li>
+
+            <li>
+              <a href="minecraft.html">Minecraft</a>
+            </li>
+
+            <li class="actual">
+              <a href="free-to-play-games.html">Play games</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <h2>FREE-TO-PLAY GAMES</h2>
+
+        <p>
+          On this website you find the most popular free-to-play games. Use the
+          search filters to find the game you like. And start playing.
+        </p>
+
+        <div class="filter-group">
+          <label for="search-games">Search games:</label>
+          <input type="text" id="search-games" />
+        </div>
+
+        <div class="filter-group">
+          <label for="platform">Platform:</label>
+          <input type="text" id="platform" />
+        </div>
+
+        <div class="filter-group">
+          <label for="category">Category:</label>
+          <input type="text" id="category" />
+        </div>
+
+        <div class="filter-group">
+          <label for="sort">Sort:</label>
+          <select id="sort">
+            <option value="title-asc">Title A-Z</option>
+            <option value="title-desc">Title Z-A</option>
+            <option value="newest">Release date newest</option>
+            <option value="oldest">Release date oldest</option>
+          </select>
+        </div>
+
+        <div class="button-container">
+          <button id="show-favourite">Show my favourite games</button>
+          <button id="show-all">Show all games</button>
+        </div>
+
+        <section class="chapters">
+          <h2>GAMES</h2>
+          <div class="cards" id="games-container"></div>
+        </section>
+      </main>
+
+      <footer>Jessica Vervaet - Front-end - 2026</footer>
+    </div>
+  </body>
+</html>

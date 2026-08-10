@@ -4,11 +4,6 @@
     margin: 40px auto;
 }
 
-.container-minecraft h2 {
-    font-size: 1.1em;
-    margin-bottom: 0.4em
-}
-
 /* Style the main content */
 .container-minecraft p {
     margin-bottom: 10px;
@@ -31,26 +26,3 @@
     display: inline-block;
     margin-right: 10px;
 }
-
-
-
-
-/* Responsive styles */
-/* @media screen and (max-width: 600px) {
-
-    table {
-        overflow-x: auto;
-        display: block;
-    }
-
-    td,
-    th {
-        white-space: nowrap;
-    }
-
-    ul {
-        padding-left: 0;
-    }
-
-
-} */

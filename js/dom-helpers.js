@@ -70,3 +70,6 @@ const unhideTable = ({tableId}) => {
     const table = document.getElementById(tableId);
     table.style.display = "table";
 };
+
+/* --- Cards --- */
+
