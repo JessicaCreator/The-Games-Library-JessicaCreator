@@ -43,6 +43,9 @@ const createGameCard = (game) => {
     updateFavouriteButton(favourite, game);
     });
 
+    const cardHeader = document.createElement("div");
+    cardHeader.className = "card-header"
+
     const genre = document.createElement("p");
     genre.textContent = `Genre: ${game.genre}`;
 
@@ -54,10 +57,11 @@ const createGameCard = (game) => {
     link.href = game.game_url;
     link.textContent = "Play game";
     link.target = "_blank";
-
+    
+    cardHeader.appendChild(title);
+    cardHeader.appendChild(favourite);
     card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(favourite);
+    card.appendChild(cardHeader);
     card.appendChild(genre);
     card.appendChild(platform);
     card.appendChild(link);
@@ -169,8 +173,10 @@ const filterAndSortGames = () => {
 const updateFavouriteButton = (button, game) => {
     if (game.isFavourite) {
         button.textContent = "★";
+        button.classList.add("favourite-active");
     } else {
         button.textContent = "☆";
+        button.classList.remove("favourite-active");
     }
 };
 
