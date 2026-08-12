@@ -209,7 +209,7 @@ searchInput.addEventListener("input", () => {
 
 const platformInput = document.getElementById("platform");
 
-platformInput.addEventListener("input", () => {
+platformInput.addEventListener("change", () => {
     filterAndSortGames();
 });
 

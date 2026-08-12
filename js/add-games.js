@@ -50,10 +50,10 @@ const addGame = async () => {
 
     if(response.ok){
         clearStatusMessage();
-        addStatus(`Deze game werd toegevoegd: ${game.name}, type game is: ${game.type}.`)
+        addStatus(`This game was added: ${game.name}, type game is: ${game.type}.`)
     } else {
         clearStatusMessage();
-        addStatus("Er is iets fout gelopen, de game kan niet worden toegevoegd.");
+        addStatus("Something went wrong, the game cannot be added.");
     }
 };
 

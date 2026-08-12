@@ -1,13 +1,16 @@
 :root {
 /* Kleuren */
---primary-color: #1F4E79;
---secondary-color: #ebecee;
---accent-color: #217346;
+--primary-color: #171a26;
+--secondary-color: #43456c;
+--tertiary-color: #5c5f8d;
+--accent-color: #89a9c6;
 --headerfooter-color: #E2E8F0;
 
 --text-color-card: #2D2D2D;
 --text-color: #d3c2b8;
+--error-color: #f10c0c;
 --border-color: #D9E1E8;
+--button-color: #1f4e79;
 --star-color: #f4c430;
 --white: #fff;
 

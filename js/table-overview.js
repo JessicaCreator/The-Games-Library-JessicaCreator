@@ -236,6 +236,11 @@ const deleteGame = async (game) => {
    await fetchAndRenderGames();
    
    if(games.length > 0) {
+    const statusElement = document.getElementById("status");
+        statusElement.querySelectorAll("p").forEach((message) => {
+            message.remove();
+        });
+        
         addStatus(`The game with name ${game.name} is now deleted.`);
     }
                 

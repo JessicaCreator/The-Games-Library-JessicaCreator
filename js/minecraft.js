@@ -119,8 +119,8 @@ setInterval(fetchAndRenderData, 5000);
 
 
 /* --- test code dummy array --- */
-document.querySelectorAll('input[name="time"]').forEach((input) => {
-    input.addEventListener("change", () => {
-        renderData(data);
-    });
-});
+// document.querySelectorAll('input[name="time"]').forEach((input) => {
+//     input.addEventListener("change", () => {
+//         renderData(data);
+//     });
+// });

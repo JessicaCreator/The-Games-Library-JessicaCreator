@@ -1,4 +1,3 @@
-
 const addStatus = (status) => {
     const statusElement = document.getElementById("status");
     const message = document.createElement("p");
@@ -71,5 +70,4 @@ const unhideTable = ({tableId}) => {
     table.style.display = "table";
 };
 
-/* --- Cards --- */
 

@@ -1,5 +1,5 @@
 .chapters {
-    padding-block: var(--spacing-xl);
+    padding-block: var(--spacing-md);
 }
 
 .cards {
@@ -11,6 +11,7 @@
 
 .card {
     display: grid;
+    grid-template-rows: auto auto 1fr auto;
     gap: var(--spacing-sm);
     background-color: var(--white);
     padding: var(--spacing-lg);
@@ -21,6 +22,10 @@
     justify-self: center;
 }
 
+.card p {
+    margin: 0;
+}
+
 .card img {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -29,10 +34,16 @@
 }
 
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
     gap: var(--spacing-sm);
+    min-height: 3.5rem;
+}
+
+.card-header h3 {
+    color: var(--primary-color);
+    margin: 0;
 }
 
 .star-button {
@@ -56,25 +67,25 @@
 
 
 .btn-primary {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--white);
-    padding: 
-    var(--spacing-xs)
-    var(--spacing-md);
+    display: block;
+    width: 100%;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    padding: var(--spacing-xs) var(--spacing-md);
     border-radius: var(--border-radius);
     transition: var(--transition);
     text-align: center;
+    text-decoration: none;
 }
 
 .btn-primary:hover{
-    background-color: var(--primary-color);
+    background-color: var(--tertiary-color);
     color: var(--white);
 }
 
 .filter-group {
     display: grid;
-    grid-template-columns: 8rem 20rem;
+    grid-template-columns: 8rem minmax(0, 25rem);
     align-items: center;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
@@ -87,5 +98,10 @@
     text-align: left;
 }
 
+.filter-group input,
+.filter-group select {
+    padding: var(--spacing-sm);
+    min-height: var(--spacing-md);
+}
 
 
