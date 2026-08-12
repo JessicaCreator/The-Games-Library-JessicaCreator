@@ -52,6 +52,9 @@ const createGameCard = (game) => {
     const platform = document.createElement("p");
     platform.textContent = `Platform: ${game.platform}`;
 
+    const releaseDate = document.createElement("p");
+    releaseDate.textContent = `Release date: ${game.release_date}`;
+
     const link = document.createElement("a");
     link.className = "btn-primary";
     link.href = game.game_url;
@@ -64,6 +67,7 @@ const createGameCard = (game) => {
     card.appendChild(cardHeader);
     card.appendChild(genre);
     card.appendChild(platform);
+    card.appendChild(releaseDate);
     card.appendChild(link);
 
     return card;

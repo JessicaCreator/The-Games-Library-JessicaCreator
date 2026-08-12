@@ -149,7 +149,7 @@ const createColor = () => {
     return `hsl(${hue}, 100%, 50%)`;
 }
 
-const title = document.querySelector("h2");
+const title = document.querySelector("h1");
 
     title.addEventListener("click", () => {
         title.setAttribute("style", `color: ${createColor()}`);
