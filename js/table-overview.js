@@ -133,15 +133,15 @@ allButton.addEventListener("click" , () => {
 
     renderGames(games);
 })
+// !status gewijzigd naar statusElement door waarschuwing van "is deprecated"
+const statusElement = document.querySelector("#status")
 
-const status = document.querySelector("#status")
-
-    status.addEventListener("mouseover", () => {
-    status.setAttribute("style", "background-color: #89a9c6");
+    statusElement.addEventListener("mouseover", () => {
+    statusElement.setAttribute("style", "background-color: #89a9c6");
     });
 
-    status.addEventListener("mouseout", () => {
-    status.removeAttribute("style");
+    statusElement.addEventListener("mouseout", () => {
+    statusElement.removeAttribute("style");
     });
 
 const createColor = () => {
