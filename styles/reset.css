@@ -1,4 +1,9 @@
-/* Reset en gebruik van before en after voor later gebruik van pseudo-elementen */
+/* Reset: standaard marges en padding van alle elementen verwijderen.
+   ::before en ::after worden meegenomen zodat ook pseudo-elementen
+   dezelfde box-sizing krijgen. */
+/* box-sizing: border-box: worden padding en border meegerekend in de opgegeven width/height.
+   Hierdoor worden padding en border niet bovenop de gewenste afmetingen toegevoegd.
+   De totale afmeting van het element blijft daardoor binnen de opgegeven width/height.*/
 *,
 *::before,
 *::after {
@@ -7,13 +12,17 @@
     padding: 0;
 }
 
-/* Verwijderen van wit lijntje onder afbeeldingen doordat afbeeldingen inline-elementen zijn */
+/* Afbeeldingen als block-element weergeven om ongewenste ruimte
+   onder de afbeelding te voorkomen.
+   max-width voorkomt dat de afbeelding buiten haar container komt.
+   height: auto behoudt de oorspronkelijke verhouding. */
 img {
     display: block;
     max-width: 100%;
     height: auto;
 } 
 
+/* Standaard opsommingstekens van lijsten verwijderen */
 ul {
     list-style: none;
 }
