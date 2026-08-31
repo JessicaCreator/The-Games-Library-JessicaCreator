@@ -1,3 +1,4 @@
+/* Algemene opmaak van de pagina */
 body {
     background-color: var(--primary-color);
     font-family: var(--font-main);
@@ -5,12 +6,15 @@ body {
     line-height: var(--line-height);
 }
 
+/* Ruimte onder de hoofdinhoud en horizontale binnenruimte */
 main {
     margin-bottom: var(--spacing-lg);
     padding-inline: var(--spacing-md);
 }
 
-h1,h2,h3 {
+/* Algemene opmaak voor de koppen */
+/* Kunnen samengevoegd worden */
+h1, h2, h3 {
     color: var(--text-color);
     font-family: var(--font-heading);    
 }
@@ -18,21 +22,25 @@ h1,h2,h3 {
 h1, h2, h3 {
     margin-bottom: var(--spacing-md);
 }
-
+/* Ruimte onder paragrafen */
 p {
     margin-bottom: var(--spacing-md);   
 }
 
+/* Container wordt maximaal zo breed als --container
+   en wordt horizontaal gecentreerd */
 .container {
     width: min(100%, var(--container));
     margin-inline:auto;
 }
 
+/* Algemene opmaak van de header */
 header {
     padding: var(--spacing-md);
     text-align: center;
 }
 
+/* Logo schaalt mee met de beschikbare breedte */
 .logo {
     display: block;
     width: 500px;
@@ -40,6 +48,7 @@ header {
     margin: 0 auto var(--spacing-lg) auto;
 }
 
+/* Navigatie-items staan op mobiel onder elkaar */
 nav ul {
     display: flex;
     flex-direction: column;
@@ -49,10 +58,12 @@ nav ul {
     margin-top: var(--spacing-md);
 }
 
+/* Elk navigatie-item neemt op mobiel de volledige breedte in */
 nav li {
     width: 100%;
 }
 
+/* Opmaak van de navigatielinks */
 nav a {
     display: block;
     padding: var(--spacing-md);
@@ -63,10 +74,12 @@ nav a {
     background-color: var(--secondary-color);
 }
 
+/* .actual geeft aan welke pagina momenteel actief is */
 .actual a {
     background-color: var(--accent-color);
 }
 
+/* Achtergrondkleur verandert wanneer je over een link gaat */
 nav a:hover {
     background-color: var(--tertiary-color);
 }
@@ -83,14 +96,17 @@ button {
     transition: var(--transition);
 }
 
+/* Hover-effect voor knoppen */
 button:hover {
     background-color: var(--tertiary-color); 
 }
 
+/* Maakt de knop tijdelijk 2% kleiner wanneer er op geklikt wordt*/
 button:active {
     transform: scale(0.98);
 }
 
+/* Knoppen staan op mobiel onder elkaar */
 .button-container {
     display: flex;
     flex-direction: column;
@@ -99,6 +115,7 @@ button:active {
     margin: var(--spacing-md) 0;
 }
 
+/* Opmaak van inputvelden binnen de button-container */
 .button-container input {
     padding: var(--spacing-xs);
     min-height: var(--spacing-sm);
@@ -112,12 +129,15 @@ button:active {
     padding-bottom: var(--spacing-sm);
 }
 
+/* Inputvelden binnen een form-group */
 .form-group input {
     width: 100%;
     max-width: 300px;
     padding: var(--spacing-sm);
 }
 
+/* Formulier wordt verticaal opgebouwd */
+/* Dit stukje code wordt voorlopig niet gebruikt */
 .form {
     display: flex;
     flex-direction: column;
@@ -125,49 +145,56 @@ button:active {
     max-width: 400px;
 }
 
+/* Opmaak voor de button die rechtstreeks in #add-game-form staat */
 #add-game-form > button {
     margin-top: var(--spacing-sm);
 }
 
 /* Opmaak tabel */
+/* Tabel kan horizontaal scrollen wanneer ze te breed is */
 .table-container {
     overflow-x: auto;
 }
-
+/* Tabel neemt de volledige beschikbare breedte in.
+   border-collapse voorkomt dubbele randen tussen cellen.
+   Momenteel zijn er geen borders ingesteld bij th en td. */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: var(--spacing-md);
 }
 
+/* Achtergrond en tekstkleur van de tabelkop */
 thead {
     background-color: var(--button-color);
     color: var(--text-color);
 }
 
+/* Een geselecteerde rij krijgt een andere achtergrond
+   en toont dat ze aanklikbaar is */
 tr.select {
     cursor: pointer;
     background-color: var(--accent-color);
 }
 
+/* Algemene opmaak van tabelcellen */
 th,
 td {
     padding: var(--spacing-md);
     text-align: left;
 }
 
-
+/* Tekst in tabelkoppen wordt vet weergegeven */
 th {
     font-weight: bold;
 }
 
-/* ----- */
-
+/* Foutmeldingen worden in de foutkleur weergegeven */
 .message-error {
     color: var(--error-color);
 }
 
-/* ----- */
+/* Footer */
 footer {
     text-align: center;
     color: var(--text-color);
@@ -177,17 +204,19 @@ footer {
 }
 
 /* Desktop size */
-
+/* Desktop: vanaf 768px wordt de navigatie horizontaal */
 @media screen and (min-width: 768px) {
 
     nav ul {
         flex-direction: row;
     }
 
+    /* Vier navigatie-items krijgen elk 25% van de breedte */
     nav li {
         width: 25%;
     }
 
+    /* Knoppen staan op desktop naast elkaar */
      .button-container {
         flex-direction: row;
         align-items: center;
