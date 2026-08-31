@@ -1,7 +1,13 @@
+/* Ruimte boven en onder ruimte waar mijn card staan.
+   Dus container van mijn cards. */
 .chapters {
     padding-block: var(--spacing-md);
 }
 
+/* Kaarten worden in een grid geplaatst.
+   auto-fit zorgt ervoor dat het aantal kolommen automatisch
+   wordt aangepast aan de beschikbare ruimte.
+   minmax() bepaalt de minimale en maximale breedte van een kolom. */
 .cards {
     display: grid;
     gap: var(--spacing-lg);
@@ -9,6 +15,10 @@
     color: var(--text-color-card);
 }
 
+/* Opmaak van één kaart */
+/* Vier rijen:
+       auto = grootte op basis van inhoud
+       1fr = resterende beschikbare ruimte */
 .card {
     display: grid;
     grid-template-rows: auto auto 1fr auto;
@@ -17,35 +27,48 @@
     padding: var(--spacing-lg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    /* Kaart neemt maximaal de beschikbare breedte in,
+       maar wordt nooit breder dan 22rem */
     width: 100%;
     max-width: 22rem;
+    /* Kaart wordt horizontaal gecentreerd binnen de grid-kolom */
     justify-self: center;
 }
 
+/* Geen extra buitenruimte onder paragrafen in een kaart */
 .card p {
     margin: 0;
 }
 
+/* Afbeelding neemt de volledige breedte van de kaart in */
 .card img {
     width: 100%;
+    /* Houdt de verhouding van de afbeelding op 16/9 */
     aspect-ratio: 16 / 9;
+    /* Afbeelding vult het kader zonder de verhouding te vervormen */
     object-fit: cover;
     border-radius: var(--border-radius);
 }
 
+/* Header van de kaart wordt verdeeld over twee grid-kolommen */
 .card-header {
     display: grid;
+    /* Eerste kolom neemt de beschikbare ruimte,
+       tweede kolom neemt alleen de benodigde ruimte in */
     grid-template-columns: 1fr auto;
     align-items: start;
     gap: var(--spacing-sm);
+    /* Zorgt voor een minimale hoogte van de header */
     min-height: 3.5rem;
 }
 
+/* Opmaak van de titel binnen de kaartheader */
 .card-header h3 {
     color: var(--primary-color);
     margin: 0;
 }
 
+/* Opmaak van de knop met de ster */
 .star-button {
     background: transparent;
     border: none;
@@ -56,16 +79,17 @@
     font-size: 1.5rem;
     line-height: 1;
 }
-
+/* Klasse die wordt toegevoegd wanneer de ster actief is */
 .favourite-active {
     color: var(--star-color);
 }
 
+/* Ster wordt iets groter bij hover */
 .star-button:hover {
     transform: scale(1.1);
 }
 
-
+/* Primaire knop/link binnen een kaart */
 .btn-primary {
     display: block;
     width: 100%;
@@ -77,12 +101,14 @@
     text-align: center;
     text-decoration: none;
 }
-
+/* Hover-effect van de primaire knop */
 .btn-primary:hover{
     background-color: var(--tertiary-color);
     color: var(--white);
 }
 
+/* Filterelementen worden naast elkaar geplaatst. Dus hier 2 kolommen
+   Vaste ruimte voor het label (8rem) en de resterende ruimte voor input/select (maximaal 25 rem) */
 .filter-group {
     display: grid;
     grid-template-columns: 8rem minmax(0, 25rem);
@@ -92,12 +118,14 @@
     margin-top: var(--spacing-md);
 }
 
+/* Opmaak van het label van een filter */
 .filter-group label {
     max-width: 300px;
     font-size: 1rem;
     text-align: left;
 }
 
+/* Gezamenlijke opmaak van input- en select-elementen */
 .filter-group input,
 .filter-group select {
     padding: var(--spacing-sm);

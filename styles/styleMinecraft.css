@@ -1,15 +1,16 @@
-/* Style the radio buttons and checkboxes */
+/* Ruimte rond radio buttons en checkboxes */
 .container-minecraft input[type="radio"],
 .container-minecraft input[type="checkbox"] {
     margin-left: var(--spacing-md);
     margin-right: var(--spacing-sm);
 }
 
-/* Style the form elements */
+/* Ruimte onder de lijst met formulierelementen */
 .container-minecraft ul {
     margin-bottom: var(--spacing-md);
 }
 
+/* Lijstitems worden naast elkaar geplaatst */
 .container-minecraft li {
     display: inline-block;
     margin-bottom: var(--spacing-md);
