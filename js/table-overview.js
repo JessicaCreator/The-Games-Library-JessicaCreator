@@ -9,6 +9,7 @@ const fetchGames = async () => {
     // Maakt de bestaande games-array leeg.
     games.length = 0;
     // Voegt alle opgehaalde games toe aan de games-array.
+    // De ... spreidt de elementen van de array zodat ze afzonderlijk aan de games-array worden toegevoegd.
     games.push(...result);
 };
 
@@ -22,7 +23,7 @@ const toString = (myGame) => {
 
 // Maakt het statusgedeelte van de pagina aan.
 const setStatus = () => {
-    // Maakt een nieuw <div>-element aan in de HTML.
+    // Maakt een nieuw div-element aan in de HTML.
     const status = document.createElement("div");
     // Geeft het div-element de id "status".
     status.id = "status";
@@ -79,7 +80,8 @@ const renderGames = (listOfGames, filterFunction, emptyMessage) => {
     if(games.length === 0) {
         // If true.
         // De statusmelding wordt gewist.
-        // De tabel wordt verborgen.
+        // De tabel wordt verborgen met hideTable().
+        // hideTable() geeft een object als parameter door. Het object bevat de eigenschap tableId met als waarde "gamesTable".
         // Er verschijnt een boodschap.
         clearStatusMessage();
         hideTable({tableId: "gamesTable"});
@@ -101,6 +103,10 @@ const renderGames = (listOfGames, filterFunction, emptyMessage) => {
         filteredGames.forEach((game) => {
         const tableRow = createTableRow();
         
+        // Functie krijgt 1 object als parameter.
+        // Dat object bevat de eigenschappen tableRow en value.
+        // tableRow is de tabelrij waaraan de cel wordt toegevoegd
+        // en value is de inhoud van de cel."
         addTableCell({tableRow, value: game.name});
         addTableCell({tableRow, value: game.type});
         addTableCell({tableRow, value: game.rating});
@@ -143,6 +149,9 @@ const renderGames = (listOfGames, filterFunction, emptyMessage) => {
         });
         
         // Voegt de volledig opgebouwde rij toe aan de tabel.
+        // Object bevat hier de eigenschappen tabel en tabelRow.
+        // Eigenschap table verwijst naar gameTable.
+        // tableRow is de tabelrij die wordt toegevoegd.
         addTableRow({table: gameTable, tableRow});
         
         });
@@ -187,7 +196,7 @@ allButton.addEventListener("click" , () => {
     renderGames(games);
 })
 
-// !status gewijzigd naar statusElement door waarschuwing van "is deprecated"
+// status gewijzigd naar statusElement door waarschuwing van "is deprecated"
 // Zoekt het status-element op.
 // Reageert wanneer de muis over het status-element gaat.
 const statusElement = document.querySelector("#status")
