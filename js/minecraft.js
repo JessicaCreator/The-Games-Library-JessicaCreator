@@ -32,14 +32,14 @@ const fetchData = async () => {
     const response = await fetch("https://api.mcsrvstat.us/3/mc-central.net");
     const result = await response.json();
 
-    // Maakt een object met de gegevens die we op de website willen bewaren.
+    // Maakt een object met de eigenschappen die we op de website willen bewaren.
     const newDate = {
         time: new Date(),
         players: result.players.online,
         maxplayers: result.players.max
     };
 
-    // Voegt de nieuwste meting vooraan de array toe.
+    // Voegt het volledige object als 1 element vooraan de array data toe.
     data.unshift(newDate);
 };
 
@@ -107,7 +107,7 @@ const renderData = (listOfData) => {
                     return b.players - a.players;
                 }
                 // Bij een gelijk aantal spelers komt de oudste tijd eerst.
-                // Dus bij gelijk bepaald de tijd de volgorde.
+                // Dus bij gelijk bepaalt de tijd de volgorde.
                 return a.time < b.time ? -1 : 1;
             });
         // Anders worden bij een gelijk aantal spelers de nieuwste metingen eerst getoond.

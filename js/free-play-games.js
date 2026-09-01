@@ -24,6 +24,7 @@ const fetchData = async () => {
     if (response.ok) {
         const result = await response.json();
         // Voegt alle opgehaalde games toe aan de bestaande data-array.
+        // De ... spreidt de elementen van de array zodat ze afzonderlijk aan de games-array worden toegevoegd.
         data.push(...result);
     } else {
         // Toont een foutmelding wanneer de games niet opgehaald kunnen worden.
@@ -31,7 +32,7 @@ const fetchData = async () => {
     }
 };
 
-// Maakt een HTML-kaart aan voor één game.
+// Maakt een HTML-card aan voor één game.
 const createGameCard = (game) => {
     // Maakt een nieuw HTML-element "article" aan.
     const card = document.createElement("article");
@@ -151,6 +152,7 @@ const sortGames = (listOfGames, sortOption) => {
     const sortedGames = [...listOfGames];
 
     if (sortOption === "title-asc") {
+        // localeCompare() gebruikt om teksten/strings met elkaar te vergelijken.
         // Sorteert de titels alfabetisch van A naar Z.
         sortedGames.sort((a, b) => a.title.localeCompare(b.title));
 
@@ -232,10 +234,12 @@ const updateFavouriteButton = (button, game) => {
     if (game.isFavourite) {
         // ★ wordt getoond wanneer de game favoriet is.
         button.textContent = "★";
+        // Voegt de CSS-class favourite-active toe aan de bestaande class van de knop.
         button.classList.add("favourite-active");
     } else {
         // ☆ wordt getoond wanneer de game geen favoriet is.
         button.textContent = "☆";
+        // Verwijdert de CSS-class favourite-active uit de bestaande class van de knop.
         button.classList.remove("favourite-active");
     }
 };
@@ -257,7 +261,8 @@ const addMessage = (message) => {
     const messageElement = document.createElement("p");
     messageElement.textContent = message;
 
-    // Geeft de melding de juiste CSS-klasse voor foutmeldingen.
+    // Geeft het element de CSS-klasse voor foutmeldingen.
+    // Dus stelt de CSS-klasse van het element in op message-error.
     messageElement.className = "message-error";
 
     // Voeg de boodschap toe aan de games-container op de pagina
